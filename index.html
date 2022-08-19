@@ -10,8 +10,10 @@
 </head>
 
 <body>
-    <div class="alert-box" id="박스">Alert 박스</div>
-    <button onclick='document.getElementById("박스").style.display = "block"'>버튼</button>
+    <div class="alert-box" id="박스">
+        <p>Alert 박스</p><button onclick="none('박스')">닫기</button>
+    </div>
+    <button onclick='block("박스")'>버튼</button>
 
     <a href="https://ko.wikipedia.org/wiki/HTML">
         <img src="https://upload.wikimedia.org/wikipedia/commons/d/de/HTML5_oval_logo.png" alt="wrong page" width="300"
@@ -20,6 +22,7 @@
     <p>
         <strong>it's way easier than memo!<strong>
                 <h3 id="hi">올 때 메로나</h3>
+
     </p>
     <ul style="list-style-type:square">
         <h3>
@@ -41,9 +44,17 @@
         document.getElementById("hi").style.color = "green";
         document.getElementById("hi").style.fontSize = "30px";
 
+        function none() {
+            document.getElementById('박스').style.display = 'none';
+        }
+        function block() {
+            document.getElementById('박스').style.display = 'block';
+        }
+
     </script>
 
     <a href="haedal.html" target="_blank">해달</a>
+
 </body>
 
 </html>
