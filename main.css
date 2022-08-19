@@ -5,3 +5,22 @@
     border-radius : 5px;
     display : none;
 }
+.head{
+    color: aliceblue;
+    float : top;
+    border-radius: 25px;
+    display : block;
+    background-color: rgb(53, 157, 123);
+    padding : 20px;
+    height : 180px;
+}
+.left{
+    color: aliceblue;
+    float : left;
+    border-radius: 25px;
+    display : block;
+    background-color: rgb(80, 104, 96);
+    padding : 15px;
+    height : 360px;  
+    width: 15%;
+}
