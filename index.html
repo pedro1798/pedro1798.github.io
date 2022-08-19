@@ -11,9 +11,9 @@
 
 <body>
     <div class="alert-box" id="박스">
-        <p>Alert 박스</p><button onclick="none('박스')">닫기</button>
+        <p>Alert 박스</p><button onclick="알림창여닫기('none')">닫기</button>
     </div>
-    <button onclick='block("박스")'>버튼</button>
+    <button onclick='알림창여닫기("block")'>열기</button>
 
     <a href="https://ko.wikipedia.org/wiki/HTML">
         <img src="https://upload.wikimedia.org/wikipedia/commons/d/de/HTML5_oval_logo.png" alt="wrong page" width="300"
@@ -44,11 +44,8 @@
         document.getElementById("hi").style.color = "green";
         document.getElementById("hi").style.fontSize = "30px";
 
-        function none() {
-            document.getElementById('박스').style.display = 'none';
-        }
-        function block() {
-            document.getElementById('박스').style.display = 'block';
+        function 알림창여닫기(name) {
+            document.getElementById('박스').style.display = name;
         }
 
     </script>
