@@ -1,48 +1,39 @@
 <!doctype html>
 <html>
 <!--import와 비슷함-->
-<title>경북대학교 사이트 모음</title>
+<title>인덱스 페이지</title>
 
 <head>
     <meta charset="UTP-8">
     <link rel="stylesheet" href="main.css">
-    <h1 id="head">경북대학교 사이트 모음</h1>
+    <h1 id="head" style='text-align:center'>인덱스 페이지</h1>
 </head>
+<hr>
 
 <body>
-    <audio src = 'sing.mp3' controls autoplay loop></audio>
+    <audio src='sing.mp3' controls autoplay loop></audio>
     <div class="alert-box" id="박스">
         <p>Alert 박스</p><button onclick="알림창여닫기('none')">닫기</button>
     </div>
-    <button onclick='알림창여닫기("block")'>열기</button>
+    <br>
+    <button onclick='알림창여닫기("block")'>alert box 구현 예제</button>
 
     <a href="https://ko.wikipedia.org/wiki/HTML">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/d/de/HTML5_oval_logo.png" alt="wrong page" width="300"
-            height="300">
+        <center><abbr title="클릭해 보세요"><img src="https://upload.wikimedia.org/wikipedia/commons/d/de/HTML5_oval_logo.png" alt="wrong page"
+                width="300" height="300"></abbr></center>
     </a>
     <p>
-        <strong>VSC is <abbr title = "I mean, seriously">way easier</abbr> than memo!<strong>
-                <h3 id="hi">올 때 <span style=color:crimson;>메<span style=color:lawngreen;>로</span><span
-                            style=color:darkblue;>나</span></h3>
+        <strong>VSC is <abbr title="I mean, seriously">way easier</abbr> than memo!<strong>
+                <h3 id="hi">1일 
+                    <span style=color:black>1</span>
+                    <span style=color:forestgreen;>커</span>
+                    <span style=color:blue;>밋</span>
+                </h3>
 
     </p>
 
-    <ul style="list-style-type:square">
-        <h3>
-            <li><a href="https://on.knu.ac.kr/portal/default/main/main05" target="_blank" title="경북대학교 포털">on.knu.ac.kr
-                    경북대학교 포털 </a></li>
-            <li><a href="https://dormt.knu.ac.kr/webview/main/Main.knu" target="_blank"
-                    title="경북대학교 기숙사">dormt.knu.ac.kr 경북대학교 기숙사 </a></li>
-            <li><a href="https://dorm.knu.ac.kr/_new_ver/" target="_blank" title="경북대학교 생활관">dorm.knu.ac.kr 경북대학교
-                    생활관</a></li>
-            <li><a href="https://knuin.knu.ac.kr/webview/main/Main.knu" target="_blank"
-                    title="경북대학교 차세대 통합시스템">knuin.knu.ac.kr 경북대학고 차세대 통합정보시스템</a></li>
-            <li><a href="https://lms1.knu.ac.kr/mypage" target="_blank" title="경북대 lms">lms1.knu.ac.kr 경북대 lms</a></li>
-        </h3>
-    </ul>
-
     <script>
-        document.getElementById("head").innerHTML = "경대 사이트 모음";
+        document.getElementById("head").innerHTML = "프론트엔드 공부용 페이지";
         // document.getElementById("hi").style.color = "green";
         document.getElementById("hi").style.fontSize = "30px";
 
@@ -53,6 +44,9 @@
     </script>
     <h2>
         <a href="haedal.html" target="_blank">해달</a>
+    </h2>
+    <h2>
+        <a href="knuSites.html" target="_blank">경북대학교 페이지 모음</a>
     </h2>
 
 </body>
