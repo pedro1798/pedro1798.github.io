@@ -9,7 +9,7 @@
 .head{
     border : 8px solid rgb(0, 0, 0);
     background-color: rgb(117, 151, 201);
-    color: rgb(54, 47, 118);
+    color: rgb(0, 0, 0);
     float : top;
     border-radius: 25px;
     display : block;
@@ -19,7 +19,7 @@
 .left{
     border : 8px solid rgb(0, 0, 0);
     background-color: rgb(117, 151, 201);
-    color: rgb(54, 47, 118);
+    color: rgb(0, 0, 0);
     float : left;
     border-radius: 25px;
     display : block;
