@@ -1,5 +1,5 @@
 .alert-box{
-    background : rgb(91, 91, 231);
+    background : rgb(127, 139, 228);
     color : rgb(255, 255, 255);
     padding : 20px;
     border-radius : 5px;
@@ -8,7 +8,7 @@
 }
 .head{
     border : 8px solid rgb(0, 0, 0);
-    background-color: rgb(117, 151, 201);
+    background-color: rgb(182, 186, 220);
     color: rgb(0, 0, 0);
     float : top;
     border-radius: 25px;
@@ -18,7 +18,7 @@
 }
 .left{
     border : 8px solid rgb(0, 0, 0);
-    background-color: rgb(117, 151, 201);
+    background-color: rgb(182, 186, 220);
     color: rgb(0, 0, 0);
     float : left;
     border-radius: 25px;
