@@ -67,8 +67,8 @@
 }
 .blogCenter{
     background-color: rgb(188, 183, 178);
-    position: absolute;
-
+    position : absolute;
+    
     border-radius:10px;
     display : block;
     padding : 20px;

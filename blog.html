@@ -7,11 +7,52 @@
     <meta charset="UTP-8">
     <link rel="stylesheet" href="main.css">
 </head>
-    <div class = 'blogBackground'>
-        <div class ='blogTop'><h3>일기장?</h3></div>
-        
-        <div class = 'blogLeft'></div>
-        
-        <dic class = 'blogCenter'></div>
+
+<body>
+
+<div class='blogBackground'>
+
+    <div class='blogTop'>
+        <h3>일기장?</h3>
     </div>
+
+    <div class='blogLeft'>
+        <h3>카테고리</h3>
+        <ul>
+            <li><button onclick="카테고리('programming')">프로그래밍</button></li>
+            <li><button onclick="카테고리('daily')">일상</button></li>
+            <li><button onclick="카테고리('books')">독서</button></li>
+        </ul>
+    </div>
+
+    <div class='blogCenter' id="basic">
+        기본창
+        <p>
+        <div class='blogCenter' id="programming">프로그래밍
+            <button onclick="beforePage('programming')">이전 페이지</button>
+        </div>
+        <div class='blogCenter' id="daily">일상
+            <button onclick="beforePage('daily')">이전 페이지</button>
+        </div>
+        <div class='blogCenter' id="books">독서
+            <button onclick="beforePage('books')">이전 페이지</button>
+        </div>
+        </p>
+    </div>
+
+</div>
+
+<script>
+
+    function 카테고리(category) {
+        document.getElementsByClassName('blogCenter').style.display = none;
+        document.getElementById("category").style.display = block;
+    }
+    function beforePage(category){
+        document.getElementById(category).style.display = none;
+    }
+</script>
+
+</body>
+
 </html>
