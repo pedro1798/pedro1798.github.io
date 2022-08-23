@@ -76,6 +76,18 @@
     width: 70%;
     margin-top : 15%;
     margin-left : 22%;
-    display: none;
+    display : none;
+}
 
+.blogBasicCenter{
+    background-color: rgb(188, 183, 178);
+    position : absolute;
+
+    border-radius:10px;
+    padding : 20px;
+    
+    height : 70%;  
+    width: 70%;
+    margin-top : 15%;
+    margin-left : 22%;
 }
