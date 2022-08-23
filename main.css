@@ -28,15 +28,40 @@
     width: 11%;
     margin-top : 10px;
 }
-.blogTop{
-    border : 8px solid rgb(0, 0, 0);
-    background-color: rgb(182, 186, 220);
-    color: rgb(0, 0, 0);
-    float : left;
-    border-radius: 25px;
+.blogBackground{
+    background-color: rgb(229, 222, 214);
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 10px;
     display : block;
     padding : 20px;
-    height : 360px;  
-    width: 11%;
+    height : 1000px;  
+    width: 70%;
     margin-top : 10px;
+}
+.blogTop{
+    background-color: rgb(252, 248, 243);
+    position: absolute;
+
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 10px;
+
+    display : block;
+    padding : 20px;
+    height : 10%;  
+    width: 93%;
+}
+.blogLeft{
+    background-color: rgb(204, 196, 187);
+    position: absolute;
+
+    border-radius:10px;
+    display : block;
+    padding : 20px;
+    
+    height : 70%;  
+    width: 15%;
+    margin-top : 15%;
 }
