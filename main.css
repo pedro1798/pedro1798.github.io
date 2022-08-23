@@ -28,3 +28,15 @@
     width: 11%;
     margin-top : 10px;
 }
+.blogTop{
+    border : 8px solid rgb(0, 0, 0);
+    background-color: rgb(182, 186, 220);
+    color: rgb(0, 0, 0);
+    float : left;
+    border-radius: 25px;
+    display : block;
+    padding : 20px;
+    height : 360px;  
+    width: 11%;
+    margin-top : 10px;
+}
