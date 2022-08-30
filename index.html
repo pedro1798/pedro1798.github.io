@@ -1,11 +1,11 @@
-<!doctype html>
+<!-- <!doctype html>
 <html>
-<!--import와 비슷함-->
 <title>인덱스 페이지</title>
 
 <head>
     <meta charset="UTP-8">
     <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="matelialize.css">
     <style>
         .link {
             text-decoration-line: none;
@@ -15,9 +15,10 @@
         .link:hover {
             color: cornflowerblues;
         }
-        hr{
-            height : 2px;
-            border : 0;
+
+        hr {
+            height: 2px;
+            border: 0;
             background-color: black;
         }
     </style>
@@ -26,14 +27,12 @@
 <body>
     <h1 id="head" style='text-align:center;'>인덱스 페이지</h1>
     <hr>
-    <!--<audio src='sing.mp3' controls autoplay loop></audio>-->
 
     <a href="https://ko.wikipedia.org/wiki/HTML">
         <abbr title="클릭해 보세요"><img src="https://upload.wikimedia.org/wikipedia/commons/d/de/HTML5_oval_logo.png"
                 alt="wrong page" width="300" height="300"></abbr>
     </a>
 
-    <!--html 이미지-->
     <br>
 
     <div class="alert-box" id="박스">
@@ -41,8 +40,6 @@
     </div>
 
     <button onclick='알림창여닫기("block")'>alert box 구현 예제</button>
-
-    <!--alert box 구현 예제-->
 
     <br>
 
@@ -56,9 +53,9 @@
     <br>
     <img src='ubuntu.jpg' width='250' height="250" style='float:left' ;>
 
+
     <script>
         document.getElementById("head").innerHTML = "프론트엔드 공부용 페이지";
-        // document.getElementById("hi").style.color = "green";
         document.getElementById("hi").style.fontSize = "30px";
 
         function 알림창여닫기(name) {
@@ -66,6 +63,47 @@
         }
 
     </script>
+</body>
+
+</html> -->
+<!doctype html>
+<html>
+
+<head>
+    <title>Front-end Study Page</title>
+    <meta charset="UTP-8">
+    <link rel="stylesheet" href="materialize.css">
+</head>
+
+<body>
+    <div class="teal lighten-5">
+        <div class="container green lighten-5">
+            <div class="row">
+                <div class="col s12  green lighten-3">
+                    <div class="card-panel   green lighten-4 hoverable">
+                        <h4>Front-end Study Page</h4>
+                    </div>
+                </div>
+                <div class="col s4 light-green lighten-1">
+                    <ul>
+                        <li><a class="btn waves-effect waves-light light-green lighten-2" href="blog.html"
+                                target="_blank">Blog Page</a></li><br>
+                        <li><a class="btn waves-effect waves-light light-green lighten-2" href="knuSites.html"
+                                target="_blank">knuSites</a></li><br>
+                    </ul>
+                </div>
+                <div class="col s8 light-green lighten-4">
+                    <a href="https://ko.wikipedia.org/wiki/HTML">
+                        <abbr title="클릭해 보세요"><img
+                                src="https://upload.wikimedia.org/wikipedia/commons/d/de/HTML5_oval_logo.png"
+                                alt="wrong page" width="300" height="300"></abbr>
+                        </a>
+                    <img src="ubuntu.jpg" alt="wrong page" width="250" height="250">Todo : 홈서버 구축!!
+                </div>
+            </div>
+        </div>
+    </div>
+    <script></script>
 </body>
 
 </html>
