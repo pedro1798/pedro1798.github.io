@@ -1,0 +1,22 @@
+body {
+  background-color: ivory;
+}
+
+h1 {
+  color: cornflowerblue;
+  transition: color 0.5s ease-in-out;
+}
+
+.clicked {
+  color: tomato;
+}
+
+.sexy-font {
+  font-family: Georgia, serif;
+}
+.cursive {
+  font-family: cursive;
+}
+.hidden {
+  display: none;
+}

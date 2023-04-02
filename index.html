@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="CSS/stylesheet.css" />
+  </head>
+  <body>
+    <h2 id="clock" style="color: cornflowerblue" class="cursive">00:00:00</h2>
+
+    <div class="hello">
+      <h1 class="sexy-font">How was your day, <br />was it tough?</h1>
+    </div>
+
+    <form id="login-form" class="hidden">
+      <input
+        required
+        maxlength="15"
+        type="text"
+        placeholder="What is your name?"
+      />
+      <input type="submit" value="Log In" />
+    </form>
+    <h2
+      class="hidden, sexy-font"
+      id="greeting"
+      style="color: cornflowerblue"
+    ></h2>
+    <form id="todo-form">
+      <input type="text" placeholder="Write a To Do and Press Enter" required />
+    </form>
+    <ul id="todo-list"></ul>
+
+    <div id="quote">
+      <span
+        ><i><b></b></i></span
+      ><br />
+      <span></span>
+    </div>
+    <div id="weather">
+      <span></span>
+      <span></span>
+    </div>
+  </body>
+
+  <script src="JS/quotes.js"></script>
+  <script src="JS/greetings.js"></script>
+  <script src="JS/clock.js"></script>
+  <script src="JS/background.js"></script>
+  <script src="JS/todo.js"></script>
+  <script src="JS/weather.js"></script>
+</html>
