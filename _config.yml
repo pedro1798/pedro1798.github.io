@@ -3,11 +3,15 @@ theme: minima
 markdown: kramdown
 lang: en
 
+minima: 
+  social_links:
+    github: pedro1798
+
 collections:
   study:
     output: true
   paper:
     output: true
   project:
-    output = true
+    output: true
 

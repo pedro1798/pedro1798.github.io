@@ -1,6 +1,6 @@
 ---
 layout: home
-title: "" 
+title: "Let there be bit." 
 show_sidebar: true
 ---
 
@@ -11,6 +11,6 @@ Recently interested in linear algebra, security and rust
 - **Email** peter584aa@knu.ac.kr
 
 ## Contents
-- [Project](project.md)
-- [Study](study.md)
-- [Papers I read](paper.md)
+- [Project](/project/)
+- [Study](/study/)
+- [Papers I read](/paper/)
