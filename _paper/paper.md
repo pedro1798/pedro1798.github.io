@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Papers I read
+title: papers I read
 ---
 
 # Papers I read
