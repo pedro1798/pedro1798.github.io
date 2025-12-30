@@ -1,7 +1,7 @@
 ---
 layout: home
 ---
-# Welcome!  
+# Welcome! 
 
 Recently interested in linear algebra, security and rust 
 
