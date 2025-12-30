@@ -11,7 +11,6 @@ Recently interested in linear algebra, security and rust
 - **Email** peter584aa@knu.ac.kr
 
 ## Contents
-- [About](about.md)
-- [Projects](projects.md)
-- [Algorithm](algorithm.md)
+- [Project](project.md)
+- [Study](study.md)
 - [Papers I read](papers.md)
