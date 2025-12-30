@@ -4,3 +4,7 @@
 .DS_Store
 push.sh
 add_commit_push.sh
+_site/
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata
