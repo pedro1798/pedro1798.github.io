@@ -5,3 +5,7 @@ markdown: kramdown
 collections:
   study:
     output: true
+  algorithm:
+    output: true
+  paper:
+    output: true
