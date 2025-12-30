@@ -1,4 +1,4 @@
-title: pedro1798
+title: ""
 theme: minima
 markdown: kramdown
 lang: en
@@ -8,5 +8,6 @@ collections:
     output: true
   paper:
     output: true
-  algorithm:
-    output: true
+  project:
+    output = true
+

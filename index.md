@@ -1,6 +1,6 @@
 ---
 layout: home
-title: 안녕하세요!
+title: "" 
 show_sidebar: true
 ---
 
