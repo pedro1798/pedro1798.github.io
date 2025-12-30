@@ -4,12 +4,13 @@ title: Study
 permalink: /study/
 ---
 
-{% comment %} 1. 모든 study 문서에서 고유 태그 추출 {% endcomment %}
+{% comment %} 1. 고유 태그 추출 (중복 제거 및 정렬) {% endcomment %}
 {% assign all_tags = "" %}
 {% for item in site.study %}
   {% if item.tags %}
-    {% assign tags_str = item.tags | join: "," %}
-    {% assign all_tags = all_tags | append: "," | append: tags_str %}
+    {% for tag in item.tags %}
+      {% capture all_tags %}{{ all_tags }}{{ tag | strip }},{% endcapture %}
+    {% endfor %}
   {% endif %}
 {% endfor %}
 {% assign tag_list = all_tags | split: "," | uniq | sort %}
@@ -19,64 +20,90 @@ permalink: /study/
   <button class="tag-filter-btn active" onclick="filterStudy('all')" data-tag="all">All</button>
   {% for tag in tag_list %}
     {% if tag != "" %}
-    <button class="tag-filter-btn" onclick="filterStudy('{{ tag }}')" data-tag="{{ tag }}">#{{ tag }}</button>
+    <button class="tag-filter-btn" onclick="filterStudy('{{ tag | strip }}')" data-tag="{{ tag | strip }}">#{{ tag | strip }}</button>
     {% endif %}
   {% endfor %}
 </div>
 
-{% comment %} 2. 모든 문서를 최신순으로 정렬 {% endcomment %}
+{% comment %} 2. 데이터 준비 및 카테고리 순서 정의 {% endcomment %}
 {% assign sorted_studies = site.study | sort: "date" | reverse %}
 {% assign main_groups = sorted_studies | group_by_exp: "item", "item.relative_path | split: '/' | slice: 1 | first" %}
+{% assign category_order = "algorithm,rust,security,network_programming" | split: "," %}
 
 <div class="study-accordion">
-  {% for main_group in main_groups %}
-  <details class="main-category" {% if forloop.first %}open{% endif %} style="margin-bottom: 15px; border: 1px solid #eee; border-radius: 8px; overflow: hidden;">
-    
-    <summary style="padding: 15px 20px; background-color: #f8f9fa; cursor: pointer; font-size: 1.3rem; font-weight: bold; color: #2196F3; list-style: none; display: flex; justify-content: space-between; align-items: center;">
-      <span>{{ main_group.name | replace: "_", " " | upcase }}</span>
-      <span style="font-size: 0.9rem; color: #999; font-weight: normal;" class="post-count">{{ main_group.items.size }} posts</span>
-    </summary>
-
-    <div style="padding: 20px; border-top: 1px solid #eee;">
-      {% assign sub_groups = main_group.items | group_by_exp: "item", "item.relative_path | split: '/' | slice: 2 | first" %}
-
-      {% for sub_group in sub_groups %}
-        <div class="sub-category" style="margin-bottom: 25px;">
-          {% unless sub_group.name contains ".md" %}
-            <h3 style="color: #666; font-size: 1.1rem; border-left: 4px solid #2196F3; padding-left: 10px; margin-bottom: 15px;">
-              # {{ sub_group.name | replace: "_", " " | capitalize }}
-            </h3>
-          {% endunless %}
-
-          <ul style="list-style-type: none; padding-left: 10px;">
-            {% for item in sub_group.items %}
-            {% assign post_date = item.date | date: "%s" | plus: 0 %}
-            {% assign now_date = "now" | date: "%s" | plus: 0 %}
-            {% assign diff = now_date | minus: post_date %}
-
-            <li class="study-item" data-tags="{{ item.tags | join: ' ' }}" style="margin-bottom: 15px;">
-              <div style="display: flex; align-items: center; flex-wrap: wrap;">
-                <span style="color: #2196F3; margin-right: 8px;">•</span>
-                <a href="{{ item.url | relative_url }}" style="text-decoration: none; color: #333; font-weight: 500; font-size: 1.05rem;">{{ item.title }}</a>
-                {% if diff < 604800 %}
-                  <span style="background-color: #FF5252; color: white; font-size: 0.65rem; padding: 2px 6px; border-radius: 4px; margin-left: 8px; font-weight: bold;">NEW</span>
-                {% endif %}
-              </div>
-              
-              {% if item.tags %}
-              <div style="margin-left: 18px; margin-top: 5px;">
-                {% for tag in item.tags %}
-                  <span class="study-tag">#{{ tag }}</span>
+  {% comment %} 3. 우선순위 카테고리 출력 (Algorithm 등) {% endcomment %}
+  {% for target in category_order %}
+    {% assign current_group = main_groups | where: "name", target | first %}
+    {% if current_group %}
+      <details class="main-category" style="margin-bottom: 15px; border: 1px solid #eee; border-radius: 8px; overflow: hidden;">
+        <summary style="padding: 15px 20px; background-color: #f8f9fa; cursor: pointer; font-size: 1.3rem; font-weight: bold; color: #2196F3; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+          <span>{{ current_group.name | replace: "_", " " | upcase }}</span>
+          <span style="font-size: 0.9rem; color: #999; font-weight: normal;">{{ current_group.items.size }} posts</span>
+        </summary>
+        <div style="padding: 20px; border-top: 1px solid #eee;">
+          {% assign sub_groups = current_group.items | group_by_exp: "item", "item.relative_path | split: '/' | slice: 2 | first" %}
+          {% for sub_group in sub_groups %}
+            <div class="sub-category" style="margin-bottom: 25px;">
+              {% unless sub_group.name contains ".md" %}
+                <h3 style="color: #666; font-size: 1.1rem; border-left: 4px solid #2196F3; padding-left: 10px; margin-bottom: 15px;"># {{ sub_group.name | replace: "_", " " | capitalize }}</h3>
+              {% endunless %}
+              <ul style="list-style-type: none; padding-left: 10px;">
+                {% for item in sub_group.items %}
+                <li class="study-item" data-tags="{{ item.tags | join: ',' }}" style="margin-bottom: 15px;">
+                  <div style="display: flex; align-items: center; flex-wrap: wrap;">
+                    <span style="color: #2196F3; margin-right: 8px;">•</span>
+                    <a href="{{ item.url | relative_url }}" style="text-decoration: none; color: #333; font-weight: 500;">{{ item.title }}</a>
+                  </div>
+                  {% if item.tags %}
+                  <div style="margin-left: 18px; margin-top: 5px;">
+                    {% for tag in item.tags %}<span class="study-tag">#{{ tag }}</span>{% endfor %}
+                  </div>
+                  {% endif %}
+                </li>
                 {% endfor %}
-              </div>
-              {% endif %}
-            </li>
-            {% endfor %}
-          </ul>
+              </ul>
+            </div>
+          {% endfor %}
         </div>
-      {% endfor %}
-    </div>
-  </details>
+      </details>
+    {% endif %}
+  {% endfor %}
+
+  {% comment %} 4. 지정되지 않은 나머지 카테고리 자동 출력 {% endcomment %}
+  {% for main_group in main_groups %}
+    {% unless category_order contains main_group.name %}
+      <details class="main-category" style="margin-bottom: 15px; border: 1px solid #eee; border-radius: 8px; overflow: hidden;">
+        <summary style="padding: 15px 20px; background-color: #f8f9fa; cursor: pointer; font-size: 1.3rem; font-weight: bold; color: #2196F3; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+          <span>{{ main_group.name | replace: "_", " " | upcase }}</span>
+          <span style="font-size: 0.9rem; color: #999; font-weight: normal;">{{ main_group.items.size }} posts</span>
+        </summary>
+        <div style="padding: 20px; border-top: 1px solid #eee;">
+          {% assign sub_groups = main_group.items | group_by_exp: "item", "item.relative_path | split: '/' | slice: 2 | first" %}
+          {% for sub_group in sub_groups %}
+            <div class="sub-category" style="margin-bottom: 25px;">
+              {% unless sub_group.name contains ".md" %}
+                <h3 style="color: #666; font-size: 1.1rem; border-left: 4px solid #2196F3; padding-left: 10px; margin-bottom: 15px;"># {{ sub_group.name | replace: "_", " " | capitalize }}</h3>
+              {% endunless %}
+              <ul style="list-style-type: none; padding-left: 10px;">
+                {% for item in sub_group.items %}
+                <li class="study-item" data-tags="{{ item.tags | join: ',' }}" style="margin-bottom: 15px;">
+                  <div style="display: flex; align-items: center; flex-wrap: wrap;">
+                    <span style="color: #2196F3; margin-right: 8px;">•</span>
+                    <a href="{{ item.url | relative_url }}" style="text-decoration: none; color: #333; font-weight: 500;">{{ item.title }}</a>
+                  </div>
+                  {% if item.tags %}
+                  <div style="margin-left: 18px; margin-top: 5px;">
+                    {% for tag in item.tags %}<span class="study-tag">#{{ tag }}</span>{% endfor %}
+                  </div>
+                  {% endif %}
+                </li>
+                {% endfor %}
+              </ul>
+            </div>
+          {% endfor %}
+        </div>
+      </details>
+    {% endunless %}
   {% endfor %}
 </div>
 
@@ -84,7 +111,6 @@ permalink: /study/
   .tag-filter-btn { border: none; background: #e0e0e0; color: #666; padding: 5px 12px; border-radius: 20px; margin: 5px 3px; cursor: pointer; font-size: 0.85rem; transition: all 0.3s; }
   .tag-filter-btn.active { background: #2196F3; color: white; }
   .study-tag { display: inline-block; background-color: #eceff1; color: #546e7a; font-size: 0.7rem; padding: 2px 10px; border-radius: 15px; margin-right: 5px; font-family: monospace; }
-  
   summary::-webkit-details-marker { display: none; }
   details[open] summary { background-color: #e3f2fd; border-bottom: 1px solid #eee; }
   summary:hover { background-color: #f1f1f1; }
@@ -94,39 +120,25 @@ permalink: /study/
 function filterStudy(tag) {
   const buttons = document.querySelectorAll('.tag-filter-btn');
   const items = document.querySelectorAll('.study-item');
-  const subCategories = document.querySelectorAll('.sub-category');
-  const mainCategories = document.querySelectorAll('.main-category');
+  const subCats = document.querySelectorAll('.sub-category');
+  const mainCats = document.querySelectorAll('.main-category');
 
-  // 1. 버튼 상태 업데이트
-  buttons.forEach(btn => {
-    if (btn.getAttribute('data-tag') === tag) btn.classList.add('active');
-    else btn.classList.remove('active');
-  });
+  buttons.forEach(btn => btn.classList.toggle('active', btn.getAttribute('data-tag') === tag));
 
-  // 2. 글 필터링
   items.forEach(item => {
-    const itemTags = item.getAttribute('data-tags').split(' ');
-    if (tag === 'all' || itemTags.includes(tag)) {
-      item.style.display = 'block';
-    } else {
-      item.style.display = 'none';
-    }
+    const tags = item.getAttribute('data-tags').split(',').map(t => t.trim());
+    item.style.display = (tag === 'all' || tags.includes(tag)) ? 'block' : 'none';
   });
 
-  // 3. 빈 소분류/대분류 숨기기
-  subCategories.forEach(sub => {
-    const visibleItems = sub.querySelectorAll('.study-item[style="display: block;"]');
-    sub.style.display = visibleItems.length > 0 ? 'block' : 'none';
+  subCats.forEach(sub => {
+    const visible = Array.from(sub.querySelectorAll('.study-item'))
+  .some(item => item.style.display !== 'none');
   });
 
-  mainCategories.forEach(main => {
-    const visibleItems = main.querySelectorAll('.study-item[style="display: block;"]');
-    if (visibleItems.length > 0) {
-      main.style.display = 'block';
-      if (tag !== 'all') main.open = true; // 필터링 시 결과가 있는 카테고리는 자동으로 펼침
-    } else {
-      main.style.display = 'none';
-    }
+  mainCats.forEach(main => {
+    const visible = sub.querySelectorAll('.study-item[style="display: block;"]').length > 0;
+    sub.style.display = visible ? 'block' : 'none';
+    if (tag !== 'all' && visible) main.open = true;
   });
 }
 </script>

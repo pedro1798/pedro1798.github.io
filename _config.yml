@@ -3,6 +3,10 @@ theme: minima
 markdown: kramdown
 lang: en
 
+kramdown: 
+ input: GFM
+ hard_wrap: true
+
 minima: 
   social_links:
     github: pedro1798
@@ -14,4 +18,5 @@ collections:
     output: true
   project:
     output: true
-
+  writings:
+    output: true
