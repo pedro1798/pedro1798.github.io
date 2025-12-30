@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>{{ page.title }} | {{ site.title }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+    <div class="container">
+      {% if page.show_sidebar %}
+      <div class="sidebar">
+        sidebar content
+      </div>
+      {% endif %}
+      
+      <main class="content">
+        {{ content }}
+      </main>
+    </div>
+  </body>
+</html>

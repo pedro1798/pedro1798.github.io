@@ -1,7 +1,8 @@
 ---
 layout: home
+title: Welcome!
+show_sidebar: true
 ---
-# Welcome! 
 
 Recently interested in linear algebra, security and rust 
 
@@ -12,4 +13,4 @@ Recently interested in linear algebra, security and rust
 ## Contents
 - [Project](project.md)
 - [Study](study.md)
-- [Papers I read](papers.md)
+- [Papers I read](paper.md)

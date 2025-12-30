@@ -1,11 +1,10 @@
 title: pedro1798
-theme: minimal
+theme: jekyll-theme-minimal
 markdown: kramdown
+lang: en
 
 collections:
   study:
-    output: true
-  algorithm:
     output: true
   paper:
     output: true

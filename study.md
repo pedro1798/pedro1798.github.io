@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Study
-permalink: /_study/
+permalink: /study/
 ---
 
 ## Security
@@ -14,6 +14,13 @@ permalink: /_study/
 ## Algorithm
 {% for item in site.study %}
 {% if item.path contains "/algorithm/" %}
+- [{{ item.title }}]({{ item.url }})
+{% endif %}
+{% endfor %}
+
+## Rust
+{% for item in site.study %}
+{% if item.path contains "/rust/" %}
 - [{{ item.title }}]({{ item.url }})
 {% endif %}
 {% endfor %}
