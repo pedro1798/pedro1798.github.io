@@ -1,7 +1,6 @@
 ---
 layout: home
-title: "Let there be bit." 
-show_sidebar: true
+title: "Let there be bit" 
 ---
 
 Recently I'm interested in linear algebra, security and rust
@@ -17,3 +16,4 @@ Recently I'm interested in linear algebra, security and rust
 - [Study](/study/)
 - [Papers I read](/paper/)
 - [Writings](/writings/)
+- [Book Archive](books.md)

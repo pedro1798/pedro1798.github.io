@@ -1,4 +1,4 @@
-title: ""
+title: "Home"
 theme: minima
 markdown: kramdown
 lang: en
@@ -10,6 +10,13 @@ kramdown:
 minima: 
   social_links:
     github: pedro1798
+
+header_pages:
+  - study.md
+  - paper.md
+  - project.md
+  - writings.md
+  - books.md
 
 collections:
   study:
