@@ -4,9 +4,16 @@ title: Study
 permalink: /_study/
 ---
 
-## OS
+## Security
 {% for item in site.study %}
-{% if item.path contains "/os/" %}
+{% if item.path contains "/security/" %}
+- [{{ item.title }}]({{ item.url }})
+{% endif %}
+{% endfor %}
+
+## Algorithm
+{% for item in site.study %}
+{% if item.path contains "/algorithm/" %}
 - [{{ item.title }}]({{ item.url }})
 {% endif %}
 {% endfor %}
