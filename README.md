@@ -6,4 +6,6 @@
 # MEMO 
 bundle show minima // _layouts 등 경로 출력
 
+[goatcounter dashboard](https://pedro1798.goatcounter.com/)
+
 
