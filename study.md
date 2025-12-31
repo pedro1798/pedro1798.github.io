@@ -123,22 +123,36 @@ function filterStudy(tag) {
   const subCats = document.querySelectorAll('.sub-category');
   const mainCats = document.querySelectorAll('.main-category');
 
+  // 1. 버튼 활성화 상태 변경
   buttons.forEach(btn => btn.classList.toggle('active', btn.getAttribute('data-tag') === tag));
 
+  // 2. 개별 아이템 필터링
   items.forEach(item => {
-    const tags = item.getAttribute('data-tags').split(',').map(t => t.trim());
-    item.style.display = (tag === 'all' || tags.includes(tag)) ? 'block' : 'none';
+    const itemTags = item.getAttribute('data-tags').split(',').map(t => t.trim());
+    const isVisible = (tag === 'all' || itemTags.includes(tag));
+    item.style.display = isVisible ? 'block' : 'none';
   });
 
+  // 3. 중분류(sub-category) 표시 여부 결정
   subCats.forEach(sub => {
-    const visible = Array.from(sub.querySelectorAll('.study-item'))
-  .some(item => item.style.display !== 'none');
+    const hasVisibleItem = Array.from(sub.querySelectorAll('.study-item'))
+                                .some(item => item.style.display !== 'none');
+    sub.style.display = hasVisibleItem ? 'block' : 'none';
   });
 
+  // 4. 대분류(main-category) 표시 및 아코디언 제어
   mainCats.forEach(main => {
-    const visible = sub.querySelectorAll('.study-item[style="display: block;"]').length > 0;
-    sub.style.display = visible ? 'block' : 'none';
-    if (tag !== 'all' && visible) main.open = true;
+    const hasVisibleItemInMain = Array.from(main.querySelectorAll('.study-item'))
+                                      .some(item => item.style.display !== 'none');
+    
+    // 검색 결과가 있으면 대분류를 보여주고, 태그 선택 시에는 아코디언을 자동으로 엽니다.
+    main.style.display = hasVisibleItemInMain ? 'block' : 'none';
+    if (tag !== 'all' && hasVisibleItemInMain) {
+      main.open = true;
+    } else if (tag === 'all') {
+      // 'All' 클릭 시에는 가독성을 위해 닫아두고 싶다면 false, 유지하고 싶다면 이 줄 삭제
+      // main.open = false; 
+    }
   });
 }
 </script>
