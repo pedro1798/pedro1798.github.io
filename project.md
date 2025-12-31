@@ -1,6 +1,6 @@
 ---
 layout: page
-title: toy projects
+title: Toy Projects
 permalink: /project/
 ---
 

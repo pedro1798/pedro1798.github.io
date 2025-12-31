@@ -36,7 +36,7 @@ permalink: /study/
     {% assign current_group = main_groups | where: "name", target | first %}
     {% if current_group %}
       <details class="main-category" style="margin-bottom: 15px; border: 1px solid #eee; border-radius: 8px; overflow: hidden;">
-        <summary style="padding: 15px 20px; background-color: #f8f9fa; cursor: pointer; font-size: 1.3rem; font-weight: bold; color: #2196F3; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+        <summary style="padding: 15px 20px; background-color: #f8f9fa; cursor: pointer; font-size: 1.3rem; font-weight: bold; color: #555; list-style: none; display: flex; justify-content: space-between; align-items: center;">
           <span>{{ current_group.name | replace: "_", " " | upcase }}</span>
           <span style="font-size: 0.9rem; color: #999; font-weight: normal;">{{ current_group.items.size }} posts</span>
         </summary>
