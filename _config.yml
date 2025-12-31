@@ -21,6 +21,7 @@ header_pages:
 collections:
   study:
     output: true
+    permalink: /study/:path/
   paper:
     output: true
   project:
