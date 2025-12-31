@@ -1,12 +1,11 @@
-title: "Home"
+title: "cd ~"
 theme: minima
 markdown: kramdown
 lang: en
 
 # 새로 추가한 내용들
-description: 아아 테스트 
-author: 
-  name: pedro1798
+description: computer science study archive, etc
+author: ""
 
 email: peter584aa@knu.ac.kr
 
@@ -27,8 +26,8 @@ header_pages:
   - study.md
   - paper.md
   - project.md
-  - writings.md
   - books.md
+  - writings.md
 
 collections:
   study:
