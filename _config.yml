@@ -3,12 +3,10 @@ theme: minima
 markdown: kramdown
 lang: en
 
-goatcounter: pedro1798.github.io
-
 pageviews:
   provider: goatcounter
 
-tagline: 아아 테스트 
+goatcounter: pedro1798
 
 kramdown: 
  input: GFM
