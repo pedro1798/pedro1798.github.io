@@ -1,5 +1,6 @@
 ---
 layout: page
+permalink: /books/
 title: Book Archive 
 ---
 # 2026

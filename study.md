@@ -45,14 +45,14 @@ permalink: /study/
           {% for sub_group in sub_groups %}
             <div class="sub-category" style="margin-bottom: 25px;">
               {% unless sub_group.name contains ".md" %}
-                <h3 style="color: #666; font-size: 1.1rem; border-left: 4px solid #2196F3; padding-left: 10px; margin-bottom: 15px;"># {{ sub_group.name | replace: "_", " " | capitalize }}</h3>
+                <h3 style="color: #2F4F4F; font-size: 1.1rem; border-left: 4px solid #2196F3; padding-left: 10px; margin-bottom: 15px;"># {{ sub_group.name | replace: "_", " " | capitalize }}</h3>
               {% endunless %}
               <ul style="list-style-type: none; padding-left: 10px;">
                 {% for item in sub_group.items %}
                 <li class="study-item" data-tags="{{ item.tags | join: ',' }}" style="margin-bottom: 15px;">
                   <div style="display: flex; align-items: center; flex-wrap: wrap;">
                     <span style="color: #2196F3; margin-right: 8px;">•</span>
-                    <a href="{{ item.url | relative_url }}" style="text-decoration: none; color: #333; font-weight: 500;">{{ item.title }}</a>
+                    <a href="{{ item.url | relative_url }}" style="text-decoration: none; color: #696969; font-weight: 500;">{{ item.title }}</a>
                   </div>
                   {% if item.tags %}
                   <div style="margin-left: 18px; margin-top: 5px;">
