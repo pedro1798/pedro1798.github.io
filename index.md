@@ -15,5 +15,4 @@ Recently, I'm interested in linear algebra, security and rust.
 - [Study](/study/)
 - [Papers I read](/paper/)
 - [Toy Projects](/project/)
-- [Writings](/writings/)
 - [Book Archive](/books/)
