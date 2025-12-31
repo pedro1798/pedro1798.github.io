@@ -1,7 +1,6 @@
 ---
-layout: post
+layout: page
 title: Quick Sort 
-date: 2026-1-1
 ---
 - unstable sort
 
