@@ -37,6 +37,4 @@ collections:
     output: true
   project:
     output: true
-  writings:
-    output: true
 
