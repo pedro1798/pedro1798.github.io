@@ -3,6 +3,13 @@ theme: minima
 markdown: kramdown
 lang: en
 
+goatcounter: pedro1798.github.io
+
+pageviews:
+  provider: goatcounter
+
+tagline: 아아 테스트 
+
 kramdown: 
  input: GFM
  hard_wrap: true
@@ -10,6 +17,7 @@ kramdown:
 minima: 
   social_links:
     github: pedro1798
+
 
 header_pages:
   - study.md
@@ -28,3 +36,4 @@ collections:
     output: true
   writings:
     output: true
+
