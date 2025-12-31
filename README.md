@@ -3,7 +3,7 @@
 
 공부 내용을 정리하는 웹페이지입니다.
 
-contact: 
-peter584aa@knu.ac.kr
+# MEMO 
+bundle show minima // _layouts 등 경로 출력
 
 
