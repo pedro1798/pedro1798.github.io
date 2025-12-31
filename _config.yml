@@ -3,8 +3,12 @@ theme: minima
 markdown: kramdown
 lang: en
 
-pageviews:
-  provider: goatcounter
+# 새로 추가한 내용들
+description: 아아 테스트 
+author: 
+  name: pedro1798
+
+email: peter584aa@knu.ac.kr
 
 goatcounter: pedro1798
 
@@ -15,6 +19,8 @@ kramdown:
 minima: 
   social_links:
     github: pedro1798
+  skin: auto
+  date_format: "%Y-%m-%d"
 
 
 header_pages:
