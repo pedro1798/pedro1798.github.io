@@ -58,7 +58,7 @@ permalink: /study/
   .category-summary h2 {
     margin: 0;
     font-size: 1.4rem;        /* 1.2rem -> 1.0rem (크게 축소) */
-    font-weight: 700;       /* Bold 대신 600으로 적당한 굵기 */
+    font-weight: 300;       /* Bold 대신 600으로 적당한 굵기 */
     color: var(--text-main);
     letter-spacing: -0.02em;
   }
