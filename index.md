@@ -1,6 +1,6 @@
 ---
 layout: home
-title: "Let there be bit" 
+title: "/* Let there be bit */" 
 ---
 
 Recently I'm interested in linear algebra, security and rust

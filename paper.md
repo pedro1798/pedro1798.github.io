@@ -4,22 +4,126 @@ title: Papers I Read
 permalink: /paper/
 ---
 
-{% comment %} 1. 모든 논문에서 고유 태그 추출 {% endcomment %}
+<style>
+  /* [색상 설정] study.md와 동일하게 유지 */
+  :root {
+    --primary-color: #6495ED;      /* CornflowerBlue */
+    --primary-light: #f0f2f2;
+    --bg-filter: #f8f9fa;
+    --bg-white: #ffffff;
+    --text-main: #333333;
+    --text-muted: #666666;
+    --border-color: #eeeeee;
+    --tag-bg: #f1f3f4;
+    --accent-red: #FF5252;        /* NEW 배지용 */
+  }
+
+  /* 태그 필터 영역 */
+  .tag-filter-container {
+    margin-bottom: 20px;
+    padding: 12px;
+    background: var(--bg-filter);
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+  }
+  .tag-filter-btn {
+    border: none;
+    background: #e9ecef;
+    color: var(--text-muted);
+    padding: 4px 10px;
+    border-radius: 15px;
+    margin: 2px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    transition: all 0.2s;
+  }
+  .tag-filter-btn.active {
+    background: var(--primary-color);
+    color: white;
+  }
+
+  /* 논문 리스트 아이템 */
+  .paper-list { margin-top: 25px; }
+  .paper-item {
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--border-color);
+    transition: transform 0.2s;
+  }
+  
+  .paper-header {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  
+  .paper-title-link {
+    text-decoration: none;
+    color: var(--text-main);
+    font-size: 1.0rem;      /* 중분류보다 약간 큰 본문 제목 크기 */
+    font-weight: 600;
+    line-height: 1.4;
+  }
+  .paper-title-link:hover {
+    color: var(--primary-color);
+    text-decoration: underline;
+  }
+
+  .new-badge {
+    background-color: var(--accent-red);
+    color: white;
+    font-size: 0.65rem;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-weight: bold;
+    vertical-align: middle;
+  }
+
+  .paper-meta {
+    margin-top: 6px;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+  }
+
+  .paper-summary {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    color: #444;
+    line-height: 1.6;
+    letter-spacing: -0.01em;
+  }
+
+  .paper-tags { margin-top: 10px; }
+  .paper-tag {
+    display: inline-block;
+    background-color: var(--tag-bg);
+    color: var(--text-muted);
+    font-size: 0.7rem;
+    padding: 1px 6px;
+    border-radius: 3px;
+    margin-right: 4px;
+    font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  }
+</style>
+
+{% comment %} 1. 고유 태그 추출 {% endcomment %}
 {% assign all_tags = "" %}
 {% for item in site.paper %}
   {% if item.tags %}
-    {% assign tags_str = item.tags | join: "," %}
-    {% assign all_tags = all_tags | append: "," | append: tags_str %}
+    {% for tag in item.tags %}
+      {% capture all_tags %}{{ all_tags }}{{ tag | strip }},{% endcapture %}
+    {% endfor %}
   {% endif %}
 {% endfor %}
 {% assign tag_list = all_tags | split: "," | uniq | sort %}
 
-<div class="tag-filter-container" style="margin-bottom: 30px; padding: 15px; background: #f8f9fa; border-radius: 10px;">
-  <span style="font-weight: bold; margin-right: 10px; color: #555;">Filter by Tags:</span>
+<div class="tag-filter-container">
+  <span style="font-weight: bold; margin-right: 10px; color: var(--text-main); font-size: 0.9rem;">Filter by Tags:</span>
   <button class="tag-filter-btn active" onclick="filterPapers('all')" data-tag="all">All</button>
   {% for tag in tag_list %}
     {% if tag != "" %}
-    <button class="tag-filter-btn" onclick="filterPapers('{{ tag }}')" data-tag="{{ tag }}">#{{ tag }}</button>
+    <button class="tag-filter-btn" onclick="filterPapers('{{ tag | strip }}')" data-tag="{{ tag | strip }}">#{{ tag | strip }}</button>
     {% endif %}
   {% endfor %}
 </div>
@@ -31,68 +135,35 @@ permalink: /paper/
     {% assign now_date = "now" | date: "%s" | plus: 0 %}
     {% assign diff = now_date | minus: post_date %}
     
-    <div class="paper-item" data-tags="{{ item.tags | join: ' ' }}" style="margin-bottom: 25px; padding-bottom: 20px; border-bottom: 1px solid #eee;">
-      <div style="display: flex; align-items: baseline; flex-wrap: wrap;">
-        <h3 style="margin: 0; font-size: 1.2rem;">
-          <a href="{{ item.url }}" target="_blank" style="text-decoration: none; color: #2196F3;">{{ item.title }}</a>
-        </h3>
-        
-        {% if diff < 2592000 %} {% comment %} 논문은 보통 30일(2592000초) 기준 NEW 표시 {% endcomment %}
-          <span style="background-color: #FF5252; color: white; font-size: 0.65rem; padding: 2px 6px; border-radius: 4px; margin-left: 8px; font-weight: bold;">NEW</span>
+    <div class="paper-item" data-tags="{{ item.tags | join: ',' }}">
+      <div class="paper-header">
+        <a href="{{ item.url | relative_url }}" class="paper-title-link">{{ item.title }}</a>
+        {% if diff < 2592000 %}
+          <span class="new-badge">NEW</span>
         {% endif %}
       </div>
 
-      <div style="margin-top: 8px; font-size: 0.9rem; color: #666;">
-        <span style="margin-right: 15px;">📅 {{ item.date | date: "%B %d, %Y" }}</span>
+      <div class="paper-meta">
+        <span style="margin-right: 12px;">📅 {{ item.date | date: "%B %d, %Y" }}</span>
         {% if item.venue %}
           <span style="font-style: italic;">📍 {{ item.venue }}</span>
         {% endif %}
       </div>
 
+      {% if item.summary %}
+      <p class="paper-summary">{{ item.summary }}</p>
+      {% endif %}
+
       {% if item.tags %}
-      <div style="margin-top: 10px;">
+      <div class="paper-tags">
         {% for tag in item.tags %}
           <span class="paper-tag">#{{ tag }}</span>
         {% endfor %}
       </div>
       {% endif %}
-
-      {% if item.summary %}
-      <p style="margin-top: 12px; font-size: 0.95rem; color: #444; line-height: 1.6;">
-        {{ item.summary }}
-      </p>
-      {% endif %}
     </div>
   {% endfor %}
 </div>
-
-<style>
-  .tag-filter-btn {
-    border: none;
-    background: #e0e0e0;
-    color: #666;
-    padding: 5px 12px;
-    border-radius: 20px;
-    margin: 5px 3px;
-    cursor: pointer;
-    font-size: 0.85rem;
-    transition: all 0.3s;
-  }
-  .tag-filter-btn:hover { background: #bdbdbd; }
-  .tag-filter-btn.active { background: #2196F3; color: white; }
-
-  .paper-tag {
-    display: inline-block;
-    background-color: #eceff1;
-    color: #546e7a;
-    font-size: 0.75rem;
-    padding: 2px 10px;
-    border-radius: 15px;
-    margin-right: 5px;
-  }
-
-  .paper-item { transition: all 0.3s ease; }
-</style>
 
 <script>
 function filterPapers(tag) {
@@ -100,20 +171,15 @@ function filterPapers(tag) {
   const buttons = document.querySelectorAll('.tag-filter-btn');
 
   // 버튼 활성화 상태 변경
-  buttons.forEach(btn => {
-    if (btn.getAttribute('data-tag') === tag) btn.classList.add('active');
-    else btn.classList.remove('active');
-  });
+  buttons.forEach(btn => btn.classList.toggle('active', btn.getAttribute('data-tag') === tag));
 
-  // 리스트 필터링
+  // 리스트 필터링 (study.md와 동일하게 깔끔한 block/none 처리)
   items.forEach(item => {
-    const tags = item.getAttribute('data-tags').split(' ');
+    const tags = item.getAttribute('data-tags').split(',').map(t => t.trim());
     if (tag === 'all' || tags.includes(tag)) {
       item.style.display = 'block';
-      setTimeout(() => { item.style.opacity = '1'; }, 10);
     } else {
-      item.style.opacity = '0';
-      setTimeout(() => { item.style.display = 'none'; }, 300);
+      item.style.display = 'none';
     }
   });
 }
