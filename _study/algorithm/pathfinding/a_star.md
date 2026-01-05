@@ -1,6 +1,9 @@
 ---
-layout: post
+layout: page
 title: "A*"
-date: 2025-12-30
-tags: [pathfinding, game]
+categories: [pathfinding]
+tags: [algorithm, pathfinding]
+published: true
 ---
+
+
