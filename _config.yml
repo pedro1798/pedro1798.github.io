@@ -27,7 +27,7 @@ header_pages:
   - paper.md
   - project.md
   - books.md
-  - writings.md
+  # - writings.md
 
 collections:
   study:
