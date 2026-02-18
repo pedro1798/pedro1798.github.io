@@ -5,7 +5,9 @@ title: Book Archive
 ---
 # 2026
 ## 2월
+- [정치적 감정](https://www.aladin.co.kr/shop/wproduct.aspx?ItemId=211084703&srsltid=AfmBOop-qOr_myHeQtFDzvk4ifhlSHki7fhMKAhdpaJX4ZRCUsetPl0Z) / 마사 누스바움
 <br>
+
 ## 1월
 - [초보자를 위한 아나키즘](https://kr.theanarchistlibrary.org/library/rijeu-a-hailrimaen-cobojareul-wihan-anakijeum) / 리즈 A. 하일리맨
 - [그대는 할말을 어디에 두고 왔는가](https://product.kyobobook.co.kr/detail/S000001919332) / 허수경
