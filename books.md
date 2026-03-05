@@ -5,6 +5,7 @@ title: Book Archive
 ---
 # 2026
 ## 2월
+- [바른 마음](https://www.aladin.co.kr/shop/wproduct.aspx?ItemId=39707862&srsltid=AfmBOoobLivbHHmfEf_6OcRA_6AX58LNvY4RPPAqWRSh8qRSYI5VHIgr) / 마사 누스바움
 - [정치적 감정](https://www.aladin.co.kr/shop/wproduct.aspx?ItemId=211084703&srsltid=AfmBOop-qOr_myHeQtFDzvk4ifhlSHki7fhMKAhdpaJX4ZRCUsetPl0Z) / 마사 누스바움
 <br>
 
