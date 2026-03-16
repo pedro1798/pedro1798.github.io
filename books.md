@@ -4,10 +4,14 @@ permalink: /books/
 title: Book Archive 
 ---
 # 2026
+## 3월 
+- [짧고 굵게 읽는 러시아 역사](https://www.aladin.co.kr/shop/wproduct.aspx?ItemId=272317663&srsltid=AfmBOoqp14KyZg-QPTPCWY-JVmr6UWrv1uWVJw_VyIadPaYuqO5BchH8) / 마크 갈레오티
+- [논어]() / 공자
+- [인간의 이해력에 관한 탐구](https://product.kyobobook.co.kr/detail/S000001039816) / 데이비드 흄
+
 ## 2월
 - [바른 마음](https://www.aladin.co.kr/shop/wproduct.aspx?ItemId=39707862&srsltid=AfmBOoobLivbHHmfEf_6OcRA_6AX58LNvY4RPPAqWRSh8qRSYI5VHIgr) / 조너선 하이트
 - [정치적 감정](https://www.aladin.co.kr/shop/wproduct.aspx?ItemId=211084703&srsltid=AfmBOop-qOr_myHeQtFDzvk4ifhlSHki7fhMKAhdpaJX4ZRCUsetPl0Z) / 마사 누스바움
-<br>
 
 ## 1월
 - [초보자를 위한 아나키즘](https://kr.theanarchistlibrary.org/library/rijeu-a-hailrimaen-cobojareul-wihan-anakijeum) / 리즈 A. 하일리맨
