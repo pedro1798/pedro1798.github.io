@@ -7,47 +7,50 @@ layout: default
     <h1 class="page-heading">{{ page.title }}</h1>
   {%- endif -%}
 
-  {{ content }}
-
-  {%- assign shown = false -%}
+  <div class="intro">
+    {{ content }}
+  </div>
 
   <ul class="post-list">
-    {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+    {%- assign date_format = "%Y-%m-%d" -%}
 
     {%- for post in site.posts -%}
       {%- unless post.categories contains "writings" -%}
-
-        {%- unless shown -%}
-          <h2 class="post-list-heading">
-            {{ page.list_title | default: "Posts" }}
-          </h2>
-          {%- assign shown = true -%}
-        {%- endunless -%}
-
-        <li>
-          <span class="post-meta">
-            {{ post.date | date: date_format }}
-          </span>
-
-          <h3>
-            <a class="post-link" href="{{ post.url | relative_url }}">
-              {{ post.title | escape }}
-            </a>
-          </h3>
-
-          {%- if site.show_excerpts -%}
-            {{ post.excerpt }}
-          {%- endif -%}
+        <li class="post-item">
+          <span class="post-date">{{ post.date | date: date_format }}</span>
+          <a class="post-link" href="{{ post.url | relative_url }}">
+            {{ post.title | escape }}
+          </a>
         </li>
-
       {%- endunless -%}
     {%- endfor -%}
   </ul>
-
-  {%- if shown -%}
-    <p class="rss-subscribe">
-      subscribe <a href="{{ "/feed.xml" | relative_url }}">via RSS</a>
-    </p>
-  {%- endif -%}
-
 </div>
+
+<style>
+  .intro {
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+  }
+  .post-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .post-item {
+    display: flex;
+    align-items: baseline;
+    margin-bottom: 0.75rem;
+  }
+  .post-date {
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    color: var(--meta-color);
+    min-width: 120px;
+    margin-right: 1rem;
+  }
+  .post-link {
+    font-size: 1.1rem;
+    font-weight: 500;
+  }
+</style>

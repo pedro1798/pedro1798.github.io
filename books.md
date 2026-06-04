@@ -3,7 +3,12 @@ layout: page
 permalink: /books/
 title: Book Archive 
 ---
+
 # 2026
+## 6월
+- [해밀턴의 그리스로마신화](https://product.kyobobook.co.kr/detail/S000001718371) / 이디스 해밀턴📖
+- [사랑의 단상](https://product.kyobobook.co.kr/detail/S000202556618) / 롤랑 바르트 📖
+
 ## 5월
 - [자유죽음](https://www.aladin.co.kr/shop/wproduct.aspx?ItemId=298624642) / Jean Amery
 

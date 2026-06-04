@@ -3,16 +3,67 @@ layout: home
 title: "/* Let there be bit */" 
 ---
 
-Recently, I'm interested in linear algebra, security and rust.
+Recently I'm interested in **Linear Algebra**, **Set Theory** and **Bevy**.
 
-최근엔 선형대수학, 보안, 러스트를 공부(하려고 생각만)하고 있어요.
+<div class="landing-sections">
+  <section class="landing-section">
+    <h3>Contents</h3>
+    <ul class="content-links">
+      <li><a href="/study/">Study</a></li>
+      <li><a href="/paper/">Papers</a></li>
+      <li><a href="/project/">Projects</a></li>
+      <li><a href="/books/">Book Archive</a></li>
+      <li><a href="/writings/">Writings</a></li>
+    </ul>
+  </section>
 
-## Links
-- [GitHub](https://github.com/pedro1798)
-- **Email** peter584aa@knu.ac.kr
+  <section class="landing-section">
+    <h3>Links</h3>
+    <ul class="content-links">
+      <li><a href="https://github.com/pedro1798">GitHub</a></li>
+      <li><a href="mailto:peter584aa@knu.ac.kr">Email</a></li>
+    </ul>
+  </section>
+</div>
 
-## Contents
-- [Study](/study/)
-- [Papers I read](/paper/)
-- [Toy Projects](/project/)
-- [Book Archive](/books/)
+<style>
+  .landing-sections {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+  .landing-section h3 {
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    color: var(--meta-color);
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+  }
+  .content-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .content-links li {
+    margin-bottom: 0.5rem;
+  }
+  .content-links a {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--link-color);
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  
+  @media (max-width: 600px) {
+    .landing-sections {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+  }
+</style>

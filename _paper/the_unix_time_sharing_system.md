@@ -13,12 +13,7 @@ PDP-11/40 and 11/45 computers. "
 # The UNIX Time-Sharing System (1974) 
 
 ---
-#### ◾ 초록
 
-#### ◾ 서론
-
-#### ◾ 본론
-
-#### ◾ 결론 
+본문 
 
 

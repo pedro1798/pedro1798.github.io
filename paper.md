@@ -5,109 +5,132 @@ permalink: /paper/
 ---
 
 <style>
-  /* [색상 설정] study.md와 동일하게 유지 */
-  :root {
-    --primary-color: #6495ED;      /* CornflowerBlue */
-    --primary-light: #f0f2f2;
-    --bg-filter: #f8f9fa;
-    --bg-white: #ffffff;
-    --text-main: #333333;
-    --text-muted: #666666;
-    --border-color: #eeeeee;
-    --tag-bg: #f1f3f4;
-    --accent-red: #FF5252;        /* NEW 배지용 */
-  }
-
-  /* 태그 필터 영역 */
   .tag-filter-container {
-    margin-bottom: 20px;
-    padding: 12px;
-    background: var(--bg-filter);
-    border-radius: 8px;
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background: var(--bg-color);
     border: 1px solid var(--border-color);
-  }
-  .tag-filter-btn {
-    border: none;
-    background: #e9ecef;
-    color: var(--text-muted);
-    padding: 4px 10px;
-    border-radius: 15px;
-    margin: 2px;
-    cursor: pointer;
-    font-size: 0.8rem;
-    transition: all 0.2s;
-  }
-  .tag-filter-btn.active {
-    background: var(--primary-color);
-    color: white;
+    border-radius: 8px;
   }
 
-  /* 논문 리스트 아이템 */
-  .paper-list { margin-top: 25px; }
-  .paper-item {
-    margin-bottom: 20px;
-    padding-bottom: 15px;
-    border-bottom: 1px solid var(--border-color);
-    transition: transform 0.2s;
+  .tag-label {
+    display: block;
+    margin-bottom: 1rem;
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: 0.8rem;
+    color: var(--meta-color);
+    text-transform: uppercase;
   }
-  
+
+  .tag-list-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .tag-filter-btn {
+    border: 1px solid var(--border-color);
+    background: var(--bg-color);
+    color: var(--text-color);
+    padding: 4px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    transition: all 0.2s ease;
+  }
+
+  .tag-filter-btn:hover {
+    background-color: var(--nav-hover);
+  }
+
+  .tag-filter-btn.active {
+    background: var(--text-color);
+    color: var(--bg-color);
+    border-color: var(--text-color);
+  }
+
+  .paper-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .paper-item {
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--border-color);
+  }
+
   .paper-header {
     display: flex;
+    justify-content: space-between;
     align-items: baseline;
-    flex-wrap: wrap;
-    gap: 8px;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
   }
-  
+
   .paper-title-link {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--link-color);
     text-decoration: none;
-    color: var(--text-main);
-    font-size: 1.0rem;      /* 중분류보다 약간 큰 본문 제목 크기 */
-    font-weight: 600;
-    line-height: 1.4;
-  }
-  .paper-title-link:hover {
-    color: var(--primary-color);
-    text-decoration: underline;
+    line-height: 1.2;
   }
 
   .new-badge {
-    background-color: var(--accent-red);
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    background: var(--link-color);
     color: white;
-    font-size: 0.65rem;
     padding: 2px 6px;
     border-radius: 4px;
-    font-weight: bold;
-    vertical-align: middle;
+    font-weight: 700;
   }
 
   .paper-meta {
-    margin-top: 6px;
+    font-family: var(--font-mono);
     font-size: 0.85rem;
-    color: var(--text-muted);
+    color: var(--meta-color);
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
   }
 
   .paper-summary {
-    margin-top: 10px;
-    font-size: 0.9rem;
-    color: #444;
+    font-size: 1rem;
+    color: var(--text-color);
+    opacity: 0.9;
     line-height: 1.6;
-    letter-spacing: -0.01em;
+    margin-bottom: 1rem;
+    padding-left: 1rem;
+    border-left: 2px solid var(--border-color);
   }
 
-  .paper-tags { margin-top: 10px; }
+  .paper-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
   .paper-tag {
-    display: inline-block;
-    background-color: var(--tag-bg);
-    color: var(--text-muted);
-    font-size: 0.7rem;
-    padding: 1px 6px;
-    border-radius: 3px;
-    margin-right: 4px;
-    font-family: 'JetBrains Mono', 'Fira Code', monospace;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--meta-color);
+    background: var(--nav-hover);
+    padding: 2px 8px;
+    border-radius: 4px;
+  }
+
+  .no-results {
+    text-align: center;
+    padding: 3rem;
+    color: var(--meta-color);
+    font-family: var(--font-mono);
+    display: none;
   }
 </style>
 
-{% comment %} 1. 고유 태그 추출 {% endcomment %}
 {% assign all_tags = "" %}
 {% for item in site.paper %}
   {% if item.tags %}
@@ -118,17 +141,20 @@ permalink: /paper/
 {% endfor %}
 {% assign tag_list = all_tags | split: "," | uniq | sort %}
 
+<!-- Tag Filter -->
 <div class="tag-filter-container">
-  <span style="font-weight: bold; margin-right: 10px; color: var(--text-main); font-size: 0.9rem;">Filter by Tags:</span>
-  <button class="tag-filter-btn active" onclick="filterPapers('all')" data-tag="all">All</button>
-  {% for tag in tag_list %}
-    {% if tag != "" %}
-    <button class="tag-filter-btn" onclick="filterPapers('{{ tag | strip }}')" data-tag="{{ tag | strip }}">#{{ tag | strip }}</button>
-    {% endif %}
-  {% endfor %}
+  <span class="tag-label">Filter by Research Area</span>
+  <div class="tag-list-wrapper">
+    <button class="tag-filter-btn active" onclick="filterPapers('all')" data-tag="all">All papers</button>
+    {% for tag in tag_list %}
+      {% if tag != "" %}
+        <button class="tag-filter-btn" onclick="filterPapers('{{ tag | strip }}')" data-tag="{{ tag | strip }}">#{{ tag | strip }}</button>
+      {% endif %}
+    {% endfor %}
+  </div>
 </div>
 
-<div class="paper-list">
+<div class="paper-list" id="paperList">
   {% assign sorted_papers = site.paper | sort: "date" | reverse %}
   {% for item in sorted_papers %}
     {% assign post_date = item.date | date: "%s" | plus: 0 %}
@@ -137,21 +163,31 @@ permalink: /paper/
     
     <div class="paper-item" data-tags="{{ item.tags | join: ',' }}">
       <div class="paper-header">
-        <a href="{{ item.url | relative_url }}" class="paper-title-link">{{ item.title }}</a>
+        <div class="paper-title-container">
+          <a href="{{ item.url | relative_url }}" class="paper-title-link">{{ item.title }}</a>
+        </div>
         {% if diff < 2592000 %}
           <span class="new-badge">NEW</span>
         {% endif %}
       </div>
 
       <div class="paper-meta">
-        <span style="margin-right: 12px;">📅 {{ item.date | date: "%B %d, %Y" }}</span>
+        <div class="meta-item">
+          <span>📅</span>
+          <span>{{ item.date | date: "%B %d, %Y" }}</span>
+        </div>
         {% if item.venue %}
-          <span style="font-style: italic;">📍 {{ item.venue }}</span>
+        <div class="meta-item">
+          <span>📍</span>
+          <span style="font-style: italic;">{{ item.venue }}</span>
+        </div>
         {% endif %}
       </div>
 
       {% if item.summary %}
-      <p class="paper-summary">{{ item.summary }}</p>
+      <div class="paper-summary">
+        {{ item.summary }}
+      </div>
       {% endif %}
 
       {% if item.tags %}
@@ -165,22 +201,38 @@ permalink: /paper/
   {% endfor %}
 </div>
 
+<div id="noResults" class="no-results">
+  <p style="font-size: 1.2rem; margin-bottom: 8px;">🔬 No papers found</p>
+  <p>Try selecting a different research area or tag.</p>
+</div>
+
 <script>
 function filterPapers(tag) {
   const items = document.querySelectorAll('.paper-item');
   const buttons = document.querySelectorAll('.tag-filter-btn');
+  const noResults = document.getElementById('noResults');
+  let visibleCount = 0;
 
-  // 버튼 활성화 상태 변경
-  buttons.forEach(btn => btn.classList.toggle('active', btn.getAttribute('data-tag') === tag));
+  // Update button states
+  buttons.forEach(btn => {
+    btn.classList.toggle('active', btn.getAttribute('data-tag') === tag);
+  });
 
-  // 리스트 필터링 (study.md와 동일하게 깔끔한 block/none 처리)
+  // Filter items with animation
   items.forEach(item => {
     const tags = item.getAttribute('data-tags').split(',').map(t => t.trim());
     if (tag === 'all' || tags.includes(tag)) {
       item.style.display = 'block';
+      item.style.animation = 'none';
+      item.offsetHeight; // trigger reflow
+      item.style.animation = 'fadeIn 0.4s ease forwards';
+      visibleCount++;
     } else {
       item.style.display = 'none';
     }
   });
+
+  // Show/hide empty state
+  noResults.style.display = visibleCount === 0 ? 'block' : 'none';
 }
 </script>
