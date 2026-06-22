@@ -13,7 +13,7 @@ Recently I'm interested in **Linear Algebra**, **Set Theory** and **Bevy**.
       <li><a href="/paper/">Papers</a></li>
       <li><a href="/project/">Projects</a></li>
       <li><a href="/books/">Book Archive</a></li>
-      <li><a href="/writings/">Writings</a></li>
+      <li><a href="/writings/">👀</a></li>
     </ul>
   </section>
 
