@@ -37,7 +37,7 @@ permalink: /study/
     color: var(--text-color);
   }
 
-  .tag-filter-container {
+  .study-search-panel {
     margin-bottom: 2rem;
     padding: 1rem;
     background: var(--bg-color);
@@ -50,7 +50,7 @@ permalink: /study/
     grid-template-columns: minmax(0, 1fr) auto;
     gap: 0.75rem;
     align-items: center;
-    margin-bottom: 1rem;
+    margin-bottom: 0;
   }
 
   .study-search {
@@ -74,44 +74,6 @@ permalink: /study/
     font-family: var(--font-mono);
     font-size: 0.78rem;
     color: var(--meta-color);
-  }
-
-  .tag-label {
-    display: block;
-    margin-bottom: 0.75rem;
-    font-family: var(--font-mono);
-    font-weight: 700;
-    font-size: 0.72rem;
-    color: var(--meta-color);
-    text-transform: uppercase;
-  }
-
-  .tag-list-wrapper {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-  }
-
-  .tag-filter-btn {
-    border: 1px solid var(--border-color);
-    background: var(--bg-color);
-    color: var(--text-color);
-    padding: 0.3rem 0.65rem;
-    border-radius: 4px;
-    cursor: pointer;
-    font-family: var(--font-mono);
-    font-size: 0.78rem;
-    transition: all 0.2s ease;
-  }
-
-  .tag-filter-btn:hover {
-    background-color: var(--nav-hover);
-  }
-
-  .tag-filter-btn.active {
-    background: var(--text-color);
-    color: var(--bg-color);
-    border-color: var(--text-color);
   }
 
   .study-accordion {
@@ -245,8 +207,7 @@ permalink: /study/
     margin-top: 0.6rem;
   }
 
-  .study-date,
-  .study-tag {
+  .study-date {
     display: inline-flex;
     align-items: center;
     min-height: 1.45rem;
@@ -299,8 +260,7 @@ permalink: /study/
   </div>
 </div>
 
-<!-- Tag Filter -->
-<div class="tag-filter-container">
+<div class="study-search-panel">
   <div class="study-search-row">
     <input
       class="study-search"
@@ -311,24 +271,6 @@ permalink: /study/
       oninput="filterStudy()"
     >
     <span class="study-visible-count" id="studyVisibleCount">{{ studies.size }} posts</span>
-  </div>
-  <span class="tag-label">Filter by Topics</span>
-  <div class="tag-list-wrapper">
-    <button class="tag-filter-btn active" onclick="setStudyTag('all')" data-tag="all">All posts</button>
-    {% assign all_tags = "" %}
-    {% for item in studies %}
-      {% if item.tags %}
-        {% for tag in item.tags %}
-          {% capture all_tags %}{{ all_tags }}{{ tag | strip }},{% endcapture %}
-        {% endfor %}
-      {% endif %}
-    {% endfor %}
-    {% assign tag_list = all_tags | split: "," | uniq | sort %}
-    {% for tag in tag_list %}
-      {% if tag != "" %}
-        <button class="tag-filter-btn" onclick="setStudyTag('{{ tag | strip }}')" data-tag="{{ tag | strip }}">#{{ tag | strip }}</button>
-      {% endif %}
-    {% endfor %}
   </div>
 </div>
 
@@ -358,7 +300,6 @@ permalink: /study/
               {% for item in sub_group.items %}
                 <li
                   class="study-item"
-                  data-tags="{{ item.tags | join: ',' }}"
                   data-title="{{ item.title | downcase | escape }}"
                   data-category="{{ main_group.name | downcase | escape }}"
                   data-subcategory="{{ sub_group.name | downcase | escape }}"
@@ -367,9 +308,6 @@ permalink: /study/
                     <a href="{{ item.url | relative_url }}" class="study-link">{{ item.title }}</a>
                     <div class="study-meta">
                       <span class="study-date">{{ item.date | date: "%Y-%m-%d" }}</span>
-                      {% for tag in item.tags %}
-                        <span class="study-tag">#{{ tag }}</span>
-                      {% endfor %}
                     </div>
                   </div>
                 </li>
@@ -383,42 +321,27 @@ permalink: /study/
 </div>
 
 <div id="noResults" class="no-results">
-  <p>No posts found for this tag.</p>
+  <p>No study notes found.</p>
 </div>
 
 <script>
-let activeStudyTag = 'all';
-
-function setStudyTag(tag) {
-  activeStudyTag = tag;
-  filterStudy();
-}
-
 function filterStudy() {
   const items = document.querySelectorAll('.study-item');
-  const buttons = document.querySelectorAll('.tag-filter-btn');
   const mainCats = document.querySelectorAll('.main-category');
   const noResults = document.getElementById('noResults');
   const visibleCount = document.getElementById('studyVisibleCount');
   const query = (document.getElementById('studySearch')?.value || '').trim().toLowerCase();
   let overallVisibleCount = 0;
 
-  buttons.forEach(btn => {
-    btn.classList.toggle('active', btn.getAttribute('data-tag') === activeStudyTag);
-  });
-
   items.forEach(item => {
-    const tags = item.getAttribute('data-tags').split(',').filter(Boolean);
     const searchableText = [
       item.dataset.title,
       item.dataset.category,
-      item.dataset.subcategory,
-      item.getAttribute('data-tags').toLowerCase()
+      item.dataset.subcategory
     ].join(' ');
-    const tagMatches = activeStudyTag === 'all' || tags.includes(activeStudyTag);
     const queryMatches = query === '' || searchableText.includes(query);
 
-    if (tagMatches && queryMatches) {
+    if (queryMatches) {
       item.hidden = false;
       overallVisibleCount++;
     } else {
@@ -430,7 +353,7 @@ function filterStudy() {
     const visibleItems = main.querySelectorAll('.study-item:not([hidden])').length;
     if (visibleItems > 0) {
       main.hidden = false;
-      if (activeStudyTag !== 'all' || query !== '') {
+      if (query !== '') {
         main.open = true;
       }
     } else {
