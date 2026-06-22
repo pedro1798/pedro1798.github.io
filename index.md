@@ -1,9 +1,9 @@
 ---
 layout: home
-title: "/* Let there be bit */" 
+title: "// Let there be bit" 
 ---
 
-Recently I'm interested in **Linear Algebra**, **Set Theory** and **Bevy**.
+Recently I'm interested in **Linear Algebra** and **Rust**.
 
 <div class="landing-sections">
   <section class="landing-section">

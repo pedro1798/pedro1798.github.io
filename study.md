@@ -5,21 +5,83 @@ permalink: /study/
 ---
 
 <style>
-  /* Use global theme variables */
+  .study-overview {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 0.75rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .study-stat {
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1rem;
+    background: var(--bg-color);
+  }
+
+  .study-stat-label {
+    display: block;
+    margin-bottom: 0.35rem;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--meta-color);
+    text-transform: uppercase;
+  }
+
+  .study-stat-value {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1;
+    color: var(--text-color);
+  }
+
   .tag-filter-container {
     margin-bottom: 2rem;
-    padding: 1.5rem;
+    padding: 1rem;
     background: var(--bg-color);
     border: 1px solid var(--border-color);
     border-radius: 8px;
   }
 
+  .study-search-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 0.75rem;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+
+  .study-search {
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    background: var(--bg-color);
+    color: var(--text-color);
+    padding: 0.65rem 0.75rem;
+    font: inherit;
+  }
+
+  .study-search:focus {
+    border-color: var(--link-color);
+    outline: 2px solid transparent;
+  }
+
+  .study-visible-count {
+    white-space: nowrap;
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--meta-color);
+  }
+
   .tag-label {
     display: block;
-    margin-bottom: 1rem;
+    margin-bottom: 0.75rem;
     font-family: var(--font-mono);
     font-weight: 700;
-    font-size: 0.8rem;
+    font-size: 0.72rem;
     color: var(--meta-color);
     text-transform: uppercase;
   }
@@ -34,11 +96,11 @@ permalink: /study/
     border: 1px solid var(--border-color);
     background: var(--bg-color);
     color: var(--text-color);
-    padding: 4px 12px;
+    padding: 0.3rem 0.65rem;
     border-radius: 4px;
     cursor: pointer;
     font-family: var(--font-mono);
-    font-size: 0.8rem;
+    font-size: 0.78rem;
     transition: all 0.2s ease;
   }
 
@@ -55,7 +117,7 @@ permalink: /study/
   .study-accordion {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 0.85rem;
   }
 
   .main-category {
@@ -65,42 +127,75 @@ permalink: /study/
   }
 
   .category-summary {
-    padding: 1rem 1.5rem;
+    padding: 1rem;
     cursor: pointer;
     list-style: none;
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 0.75rem;
     align-items: center;
     background-color: var(--bg-color);
     transition: background-color 0.2s ease;
+  }
+
+  .category-summary::-webkit-details-marker {
+    display: none;
   }
 
   .category-summary:hover {
     background-color: var(--nav-hover);
   }
 
+  .category-chevron {
+    width: 1.25rem;
+    height: 1.25rem;
+    display: inline-grid;
+    place-items: center;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    color: var(--meta-color);
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    transition: transform 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  }
+
+  .main-category[open] .category-chevron {
+    transform: rotate(90deg);
+    color: var(--link-color);
+    border-color: var(--link-color);
+  }
+
   .category-summary h2 {
     margin: 0;
     font-size: 1rem;
     font-family: var(--font-mono);
+    letter-spacing: 0;
   }
 
   .post-count {
     font-family: var(--font-mono);
-    font-size: 0.8rem;
+    font-size: 0.78rem;
     color: var(--meta-color);
+    background: var(--nav-hover);
+    border-radius: 4px;
+    padding: 0.2rem 0.45rem;
   }
 
   .category-content {
-    padding: 1.5rem;
+    padding: 1rem;
     border-top: 1px solid var(--border-color);
+  }
+
+  .sub-category + .sub-category {
+    margin-top: 1.25rem;
   }
 
   .sub-title {
     font-family: var(--font-mono);
-    font-size: 0.9rem;
+    font-size: 0.78rem;
+    font-weight: 700;
     color: var(--meta-color);
-    margin-bottom: 1rem;
+    margin: 0 0 0.65rem;
     text-transform: lowercase;
   }
 
@@ -108,27 +203,56 @@ permalink: /study/
     list-style: none;
     padding: 0;
     margin: 0;
+    display: grid;
+    gap: 0.65rem;
   }
 
   .study-item {
-    margin-bottom: 1rem;
+    margin: 0;
+  }
+
+  .study-link-container {
+    display: block;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 0.9rem;
+    background: var(--bg-color);
+    transition: border-color 0.2s ease, background-color 0.2s ease, transform 0.2s ease;
+  }
+
+  .study-link-container:hover {
+    border-color: var(--link-color);
+    background: var(--nav-hover);
+    transform: translateY(-1px);
   }
 
   .study-link {
     font-weight: 600;
-    font-size: 1.1rem;
+    font-size: 1rem;
     color: var(--link-color);
     text-decoration: none;
     display: block;
+    line-height: 1.35;
   }
 
   .study-meta {
     display: flex;
-    gap: 1rem;
+    flex-wrap: wrap;
+    gap: 0.45rem;
     font-family: var(--font-mono);
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     color: var(--meta-color);
-    margin-top: 0.25rem;
+    margin-top: 0.6rem;
+  }
+
+  .study-date,
+  .study-tag {
+    display: inline-flex;
+    align-items: center;
+    min-height: 1.45rem;
+    border-radius: 4px;
+    background: var(--nav-hover);
+    padding: 0 0.45rem;
   }
 
   .no-results {
@@ -138,15 +262,59 @@ permalink: /study/
     display: none;
     font-family: var(--font-mono);
   }
+
+  @media (max-width: 600px) {
+    .study-search-row {
+      grid-template-columns: 1fr;
+    }
+
+    .category-summary {
+      grid-template-columns: auto 1fr;
+    }
+
+    .post-count {
+      grid-column: 2;
+      justify-self: start;
+    }
+  }
 </style>
 
 {% assign studies = site.study | sort: "date" | reverse %}
+{% assign main_groups = studies | group_by_exp: "item", "item.relative_path | split: '/' | slice: 1 | first" %}
+{% assign main_category_count = 0 %}
+{% for main_group in main_groups %}
+  {% unless main_group.name == nil or main_group.name contains ".md" %}
+    {% assign main_category_count = main_category_count | plus: 1 %}
+  {% endunless %}
+{% endfor %}
+
+<div class="study-overview">
+  <div class="study-stat">
+    <span class="study-stat-label">Posts</span>
+    <span class="study-stat-value">{{ studies.size }}</span>
+  </div>
+  <div class="study-stat">
+    <span class="study-stat-label">Categories</span>
+    <span class="study-stat-value">{{ main_category_count }}</span>
+  </div>
+</div>
 
 <!-- Tag Filter -->
 <div class="tag-filter-container">
+  <div class="study-search-row">
+    <input
+      class="study-search"
+      id="studySearch"
+      type="search"
+      placeholder="Search study notes"
+      aria-label="Search study notes"
+      oninput="filterStudy()"
+    >
+    <span class="study-visible-count" id="studyVisibleCount">{{ studies.size }} posts</span>
+  </div>
   <span class="tag-label">Filter by Topics</span>
   <div class="tag-list-wrapper">
-    <button class="tag-filter-btn active" onclick="filterStudy('all')" data-tag="all">All posts</button>
+    <button class="tag-filter-btn active" onclick="setStudyTag('all')" data-tag="all">All posts</button>
     {% assign all_tags = "" %}
     {% for item in studies %}
       {% if item.tags %}
@@ -158,18 +326,24 @@ permalink: /study/
     {% assign tag_list = all_tags | split: "," | uniq | sort %}
     {% for tag in tag_list %}
       {% if tag != "" %}
-        <button class="tag-filter-btn" onclick="filterStudy('{{ tag | strip }}')" data-tag="{{ tag | strip }}">#{{ tag | strip }}</button>
+        <button class="tag-filter-btn" onclick="setStudyTag('{{ tag | strip }}')" data-tag="{{ tag | strip }}">#{{ tag | strip }}</button>
       {% endif %}
     {% endfor %}
   </div>
 </div>
 
 <div class="study-accordion" id="studyAccordion">
-  {% assign main_groups = studies | group_by_exp: "item", "item.relative_path | split: '/' | slice: 1 | first" %}
+  {% assign opened_default_category = false %}
   {% for main_group in main_groups %}
     {% if main_group.name == nil or main_group.name contains ".md" %}{% continue %}{% endif %}
-    <details class="main-category" id="cat-{{ main_group.name | slugify }}">
+    <details
+      class="main-category"
+      id="cat-{{ main_group.name | slugify }}"
+      {% if main_category_count <= 3 or opened_default_category == false %}open{% endif %}
+    >
+      {% assign opened_default_category = true %}
       <summary class="category-summary">
+        <span class="category-chevron" aria-hidden="true">&gt;</span>
         <h2>{{ main_group.name | replace: "_", " " | upcase }}</h2>
         <span class="post-count">{{ main_group.items.size }} posts</span>
       </summary>
@@ -182,7 +356,13 @@ permalink: /study/
             {% endunless %}
             <ul class="study-list">
               {% for item in sub_group.items %}
-                <li class="study-item" data-tags="{{ item.tags | join: ',' }}">
+                <li
+                  class="study-item"
+                  data-tags="{{ item.tags | join: ',' }}"
+                  data-title="{{ item.title | downcase | escape }}"
+                  data-category="{{ main_group.name | downcase | escape }}"
+                  data-subcategory="{{ sub_group.name | downcase | escape }}"
+                >
                   <div class="study-link-container">
                     <a href="{{ item.url | relative_url }}" class="study-link">{{ item.title }}</a>
                     <div class="study-meta">
@@ -207,52 +387,65 @@ permalink: /study/
 </div>
 
 <script>
-function filterStudy(tag) {
+let activeStudyTag = 'all';
+
+function setStudyTag(tag) {
+  activeStudyTag = tag;
+  filterStudy();
+}
+
+function filterStudy() {
   const items = document.querySelectorAll('.study-item');
   const buttons = document.querySelectorAll('.tag-filter-btn');
   const mainCats = document.querySelectorAll('.main-category');
   const noResults = document.getElementById('noResults');
+  const visibleCount = document.getElementById('studyVisibleCount');
+  const query = (document.getElementById('studySearch')?.value || '').trim().toLowerCase();
   let overallVisibleCount = 0;
 
-  // Update button states
   buttons.forEach(btn => {
-    btn.classList.toggle('active', btn.getAttribute('data-tag') === tag);
+    btn.classList.toggle('active', btn.getAttribute('data-tag') === activeStudyTag);
   });
 
-  // Filter items
   items.forEach(item => {
-    const tags = item.getAttribute('data-tags').split(',');
-    if (tag === 'all' || tags.includes(tag)) {
-      item.style.display = 'block';
-      item.style.animation = 'none';
-      item.offsetHeight; // trigger reflow
-      item.style.animation = 'fadeIn 0.4s ease forwards';
+    const tags = item.getAttribute('data-tags').split(',').filter(Boolean);
+    const searchableText = [
+      item.dataset.title,
+      item.dataset.category,
+      item.dataset.subcategory,
+      item.getAttribute('data-tags').toLowerCase()
+    ].join(' ');
+    const tagMatches = activeStudyTag === 'all' || tags.includes(activeStudyTag);
+    const queryMatches = query === '' || searchableText.includes(query);
+
+    if (tagMatches && queryMatches) {
+      item.hidden = false;
       overallVisibleCount++;
     } else {
-      item.style.display = 'none';
+      item.hidden = true;
     }
   });
 
-  // Filter categories
   mainCats.forEach(main => {
-    const visibleItems = main.querySelectorAll('.study-item[style="display: block;"]').length;
+    const visibleItems = main.querySelectorAll('.study-item:not([hidden])').length;
     if (visibleItems > 0) {
-      main.style.display = 'block';
-      if (tag !== 'all') {
+      main.hidden = false;
+      if (activeStudyTag !== 'all' || query !== '') {
         main.open = true;
       }
     } else {
-      main.style.display = 'none';
+      main.hidden = true;
     }
     
-    // Update count label inside category
     const countLabel = main.querySelector('.post-count');
     if (countLabel) {
       countLabel.textContent = `${visibleItems} posts`;
     }
   });
 
-  // Show no results message
   noResults.style.display = overallVisibleCount === 0 ? 'block' : 'none';
+  if (visibleCount) {
+    visibleCount.textContent = `${overallVisibleCount} posts`;
+  }
 }
 </script>
