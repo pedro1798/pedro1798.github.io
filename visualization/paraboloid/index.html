@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>f(x, y) = x² + y²</title>
+    <style>
+      :root {
+        color-scheme: dark;
+        font-family:
+          Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        background: #07080a;
+        color: #f6f7fb;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        overflow: hidden;
+      }
+
+      body {
+        background:
+          radial-gradient(circle at 24% 18%, rgba(41, 151, 194, 0.2), transparent 28%),
+          linear-gradient(145deg, #090a0c 0%, #101216 48%, #050607 100%);
+      }
+
+      main {
+        position: relative;
+        width: 100vw;
+        height: 100vh;
+      }
+
+      #bevy-canvas {
+        display: block;
+        width: 100%;
+        height: 100%;
+        outline: none;
+      }
+
+      .title {
+        position: absolute;
+        top: clamp(18px, 4vw, 44px);
+        left: clamp(18px, 4vw, 52px);
+        max-width: min(520px, calc(100vw - 36px));
+        pointer-events: none;
+      }
+
+      h1 {
+        margin: 0 0 8px;
+        font-size: clamp(30px, 6vw, 72px);
+        line-height: 0.95;
+        letter-spacing: 0;
+      }
+
+      p {
+        max-width: 46ch;
+        margin: 0;
+        color: rgba(246, 247, 251, 0.78);
+        font-size: clamp(14px, 1.8vw, 18px);
+        line-height: 1.55;
+      }
+
+      .controls {
+        position: absolute;
+        right: clamp(16px, 3vw, 36px);
+        bottom: clamp(16px, 3vw, 36px);
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        padding: 10px 12px;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        border-radius: 8px;
+        background: rgba(8, 10, 12, 0.58);
+        backdrop-filter: blur(14px);
+        color: rgba(246, 247, 251, 0.82);
+        font-size: 13px;
+        white-space: nowrap;
+      }
+
+      @media (max-width: 640px) {
+        .controls {
+          left: 16px;
+          right: 16px;
+          justify-content: center;
+          font-size: 12px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <canvas id="bevy-canvas"></canvas>
+      <section class="title" aria-label="graph title">
+        <h1>f(x, y) = x² + y²</h1>
+        <p>포물면의 높이를 색으로 함께 표현한 Bevy WASM Paraboloid 시각화</p>
+      </section>
+      <div class="controls">드래그: 회전 · 휠: 확대/축소</div>
+    </main>
+    <script type="module">
+      import init from "./pkg/paraboloid_gallery.js";
+
+      init();
+    </script>
+  </body>
+</html>
