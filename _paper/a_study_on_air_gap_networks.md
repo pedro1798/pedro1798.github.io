@@ -8,6 +8,7 @@ summary: "Air-gap network은 외부 네트워크와 물리적으로 격리하여
 ---
 # A Study on Air-Gap Networks(IEEE)
 
+![Air gap](https://en.wikipedia.org/wiki/Air_gap_%28networking%29)
 ## Air Gap의 개념
 사이버 공격으로부터 중요한 데이터를 보호하기 위해 네트워크 분리 구현이 필요하다.
 **Air Gapping**: 컴퓨터나 기타 장치를 다른 모든 장치로부터 (유무선 연결이 없는)물리적으로 격리하는 행위. 
