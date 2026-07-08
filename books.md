@@ -6,6 +6,9 @@ title: Book Archive
 
 # 2026
 
+## 7월
+- [공산주의의 역사]({% link books/COMMUNISM.md%}) / 리처드 파이프스
+
 ## 6월
 - [In Defence of Anarchism]({% link books/inDefenceofAnarchism.md%}) / 로버트 폴 울프
 - [해밀턴의 그리스로마신화](https://product.kyobobook.co.kr/detail/S000001718371) / 이디스 해밀턴📖
