@@ -8,7 +8,7 @@ title: Book Archive
 
 ## 7월
 - [공산주의의 역사]({% link books/COMMUNISM.md%}) / 리처드 파이프스
-- [지하생활자의 수기]({% link books/notes from underground.md%}) / 표도르 도스토옙스키
+- [지하생활자의 수기]({% link books/notesFromUnderground.md%}) / 표도르 도스토옙스키
 
 ## 6월
 - [In Defence of Anarchism]({% link books/inDefenceofAnarchism.md%}) / 로버트 폴 울프
