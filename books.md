@@ -9,6 +9,8 @@ title: Book Archive
 ## 7월
 - [공산주의의 역사]({% link books/COMMUNISM.md%}) / 리처드 파이프스
 - [지하생활자의 수기]({% link books/notesFromUnderground.md%}) / 표도르 도스토옙스키
+- [에로스의 종말](https://product.kyobobook.co.kr/detail/S000000570122) / 한병철 
+- [브람스를 좋아하세요...](https://product.kyobobook.co.kr/detail/S000000620316) / 프랑수아즈 사강
 
 ## 6월
 - [In Defence of Anarchism]({% link books/inDefenceofAnarchism.md%}) / 로버트 폴 울프
