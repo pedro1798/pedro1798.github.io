@@ -6,6 +6,10 @@ title: Book Archive
 
 # 2026
 
+## 8월
+- [싯다르타](https://ebook-product.kyobobook.co.kr/dig/epd/ebook/E000003091058) / 헤르만 헤세
+- [고도를 기다리며](https://ebook-product.kyobobook.co.kr/dig/epd/ebook/E000003091044) / 사뮈엘 베케트
+
 ## 7월
 - [공산주의의 역사]({% link books/COMMUNISM.md%}) / 리처드 파이프스
 - [지하생활자의 수기]({% link books/notesFromUnderground.md%}) / 표도르 도스토옙스키
