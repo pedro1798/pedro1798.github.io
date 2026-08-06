@@ -12,7 +12,7 @@ Recently I'm interested in **Linear Algebra** and **Rust**.
       <li><a href="/study/">Study</a></li>
       <li><a href="/paper/">Papers</a></li>
       <li><a href="/project/">Projects</a></li>
-      <li><a href="/books/">Book Archive</a></li>
+      <li><a href="/books/">Archive</a></li>
       <!-- <li><a href="/writings/">writings</a></li> -->
     </ul>
   </section>
