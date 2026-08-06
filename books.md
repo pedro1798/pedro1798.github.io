@@ -1,7 +1,7 @@
 ---
 layout: page
 permalink: /books/
-title: Book Archive 
+title: Archive 
 ---
 
 # 2026
