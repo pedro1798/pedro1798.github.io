@@ -10,6 +10,7 @@ title: Archive
 - [싯다르타](https://ebook-product.kyobobook.co.kr/dig/epd/ebook/E000003091058) / 헤르만 헤세
 - [고도를 기다리며](https://ebook-product.kyobobook.co.kr/dig/epd/ebook/E000003091044) / 사뮈엘 베케트
 - [소크라테스의 변명 • 크리톤 • 파이돈 • 향연](https://product.kyobobook.co.kr/detail/S000000548756) / 플라톤
+- [사랑예찬](https://product.kyobobook.co.kr/detail/S000001005088) / 알랭 바디우 
 
 ## 7월
 - [공산주의의 역사]({% link books/COMMUNISM.md%}) / 리처드 파이프스
