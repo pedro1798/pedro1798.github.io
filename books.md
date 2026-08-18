@@ -12,6 +12,7 @@ title: Archive
 - [소크라테스의 변명 • 크리톤 • 파이돈 • 향연](https://product.kyobobook.co.kr/detail/S000000548756) / 플라톤
 - [사랑예찬](https://product.kyobobook.co.kr/detail/S000001005088) / 알랭 바디우 
 - [젊은 베르테르의 슬픔](https://product.kyobobook.co.kr/detail/S000000620162) / 요한 폰 볼프강 괴테 
+- [전설의 해커: 세상을 바꾼 천재와 16가지 사건들](https://product.kyobobook.co.kr/detail/S000001019597) / 정영훈 외  
 
 ## 7월
 - [공산주의의 역사]({% link books/COMMUNISM.md%}) / 리처드 파이프스
